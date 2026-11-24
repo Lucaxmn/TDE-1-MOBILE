@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bhaskara.MainPage"
+             Title="Calculadora de Bhaskara"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#0F172A}">
+    <ContentPage.Resources>
+        <Style TargetType="Border">
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Stroke" Value="{AppThemeBinding Light=#CBD5E1, Dark=#475569}" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#1E293B}" />
+        </Style>
+        <Style x:Key="Campo" TargetType="Entry">
+            <Setter Property="Keyboard" Value="Numeric" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="MinimumHeightRequest" Value="48" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="22,28,22,28" Spacing="16" MaximumWidthRequest="500">
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Calculadora de Bhaskara"
+                       FontSize="30" FontAttributes="Bold"
+                       SemanticProperties.HeadingLevel="Level1" />
+                <Label Text="ax² + bx + c = 0" FontSize="16" />
+            </VerticalStackLayout>
+
+            <Border BackgroundColor="White">
+                <Image Source="bhaskaraf.png" HeightRequest="54" Aspect="AspectFit"
+                       SemanticProperties.Description="x igual a menos b mais ou menos a raiz quadrada de delta, dividido por dois a" />
+            </Border>
+
+            <Border>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Coeficientes" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="16">
+                        <Entry x:Name="A" AutomationId="CoeficienteA" Placeholder="A" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coeficiente quadrático A" />
+                        <Entry x:Name="B" AutomationId="CoeficienteB" Grid.Column="1" Placeholder="B" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coeficiente linear B" />
+                        <Entry x:Name="C" AutomationId="CoeficienteC" Grid.Column="2" Placeholder="C" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coeficiente constante C" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Calcular Raízes" AutomationId="CalcularRaizes"
+                    Clicked="CalcularRaizes_Clicked" MinimumHeightRequest="52"
+                    BackgroundColor="#155E75" TextColor="White" FontAttributes="Bold" CornerRadius="12" />
+
+            <Label x:Name="Erro" IsVisible="False" FontSize="15"
+                   TextColor="{AppThemeBinding Light=#B91C1C, Dark=#FCA5A5}" />
+
+            <Border x:Name="Resultado" IsVisible="False">
+                <VerticalStackLayout Spacing="5">
+                    <Label x:Name="ValorDelta" FontSize="16" />
+                    <Label x:Name="Raizes" FontSize="19" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#155E75, Dark=#A5F3FC}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

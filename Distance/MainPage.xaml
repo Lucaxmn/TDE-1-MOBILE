@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.MainPage"
+             Title="Calculadora de Distância"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light=#F1F5F9, Dark=#0F172A}">
+    <ContentPage.Resources>
+        <Style TargetType="Border">
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Stroke" Value="{AppThemeBinding Light=#CBD5E1, Dark=#475569}" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#1E293B}" />
+        </Style>
+        <Style x:Key="Campo" TargetType="Entry">
+            <Setter Property="Keyboard" Value="Numeric" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="MinimumHeightRequest" Value="48" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="22,28,22,28" Spacing="16" MaximumWidthRequest="500">
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Distância entre dois pontos"
+                       FontSize="30" FontAttributes="Bold"
+                       SemanticProperties.HeadingLevel="Level1" />
+                <Label Text="d = √((x₂ − x₁)² + (y₂ − y₁)²)" FontSize="15" />
+            </VerticalStackLayout>
+
+            <Border>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Ponto A" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                        <Entry x:Name="Ax" AutomationId="Ax" Placeholder="X₁" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coordenada X do ponto A" />
+                        <Entry x:Name="Ay" AutomationId="Ay" Grid.Column="1" Placeholder="Y₁" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coordenada Y do ponto A" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Ponto B" FontSize="16" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                        <Entry x:Name="Bx" AutomationId="Bx" Placeholder="X₂" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coordenada X do ponto B" />
+                        <Entry x:Name="By" AutomationId="By" Grid.Column="1" Placeholder="Y₂" Style="{StaticResource Campo}"
+                               SemanticProperties.Description="Coordenada Y do ponto B" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Calcular Distância" AutomationId="CalcularDistancia"
+                    Clicked="CalcularDistancia_Clicked" MinimumHeightRequest="52"
+                    BackgroundColor="#155E75" TextColor="White" FontAttributes="Bold" CornerRadius="12" />
+
+            <Label x:Name="Erro" IsVisible="False" FontSize="15"
+                   TextColor="{AppThemeBinding Light=#B91C1C, Dark=#FCA5A5}" />
+
+            <Border x:Name="Resultado" IsVisible="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Distância de A até B" FontSize="14" />
+                    <Label x:Name="ValorDistancia" FontSize="28" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#155E75, Dark=#A5F3FC}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

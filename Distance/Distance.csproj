@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ApplicationTitle>Calculadora de Distância</ApplicationTitle>
+    <ApplicationId>br.edu.tde01.distance</ApplicationId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/dist_icon.png" Color="#F1F5F9" />
+    <MauiSplashScreen Include="Resources/AppIcon/dist_icon.png" Color="#F1F5F9" BaseSize="128,128" />
+    <MauiFont Include="Resources/Fonts/*" />
+    <Compile Include="../Shared/Numeros.cs" Link="Numeros.cs" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+  </ItemGroup>
+</Project>
