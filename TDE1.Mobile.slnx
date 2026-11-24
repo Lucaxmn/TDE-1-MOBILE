@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Bhaskara/Bhaskara.csproj" />
+  <Project Path="Distance/Distance.csproj" />
+</Solution>
